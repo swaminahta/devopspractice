@@ -37,13 +37,13 @@ resource "aws_ebs_volume" "Forpractice" {
 
 resource "aws_iam_policy_attachment" "global-policy-attachemnt" {
   name       = "remote-access-attachment"
-  roles      = [aws_iam_role.demo-role.name]
+  roles      = [aws_iam_role.demo-role.id]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
 
 resource "aws_iam_instance_profile" "demo-role" {
   name = "testprofile"
-  role = aws_iam_role.demo-role.name
+  role = aws_iam_role.demo-role.id
 }
 
 resource "aws_iam_role" "demo-role" {
